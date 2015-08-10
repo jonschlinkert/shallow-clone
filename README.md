@@ -29,7 +29,7 @@ var foo = clone(arr);
 assert.equal(actual === expected, false);
 
 // array elements are not
-assert.deepEqual(actual[0] === expected[0], true);
+assert.deepEqual(actual[0], expected[0]); // true
 ```
 
 ## returns primitives as-is
