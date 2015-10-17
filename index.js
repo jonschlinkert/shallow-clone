@@ -7,10 +7,7 @@
 
 'use strict';
 
-var lazy = require('lazy-cache')(require);
-lazy.isObject = lazy('is-extendable');
-lazy.mixin = lazy('mixin-object');
-lazy.typeOf = lazy('kind-of');
+var utils = require('./utils');
 
 /**
  * Shallow copy an object, array or primitive.
@@ -20,8 +17,7 @@ lazy.typeOf = lazy('kind-of');
  */
 
 function clone(val) {
-  var typeOf = lazy.typeOf();
-  var type = typeOf(val);
+  var type = utils.typeOf(val);
 
   if (clone.hasOwnProperty(type)) {
     return clone[type](val);
@@ -38,11 +34,8 @@ clone.date = function cloneDate(date) {
 };
 
 clone.object = function cloneObject(obj) {
-  var isObject = lazy.isObject();
-  var mixin = lazy.mixin();
-
-  if (isObject(obj)) {
-    return mixin({}, obj);
+  if (utils.isObject(obj)) {
+    return utils.mixin({}, obj);
   } else {
     return obj;
   }
