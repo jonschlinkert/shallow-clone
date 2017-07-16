@@ -1,17 +1,20 @@
 {
   "name": "shallow-clone",
   "description": "Make a shallow clone of an object, array or primitive.",
-  "version": "0.1.2",
+  "version": "0.1.1",
   "homepage": "https://github.com/jonschlinkert/shallow-clone",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
+  "contributors": [
+    "Brian Woodward (https://twitter.com/doowb)",
+    "Jon Schlinkert (http://twitter.com/jonschlinkert)"
+  ],
   "repository": "jonschlinkert/shallow-clone",
   "bugs": {
     "url": "https://github.com/jonschlinkert/shallow-clone/issues"
   },
   "license": "MIT",
   "files": [
-    "index.js",
-    "utils.js"
+    "index.js"
   ],
   "main": "index.js",
   "engines": {
@@ -22,13 +25,13 @@
   },
   "dependencies": {
     "is-extendable": "^0.1.1",
-    "kind-of": "^2.0.1",
-    "lazy-cache": "^0.2.3",
+    "kind-of": "^5.0.0",
     "mixin-object": "^2.0.1"
   },
   "devDependencies": {
-    "mocha": "*",
-    "should": "*"
+    "gulp-format-md": "^1.0.0",
+    "mocha": "^3.4.2",
+    "should": "^11.2.1"
   },
   "keywords": [
     "array",
@@ -41,15 +44,28 @@
     "shallow"
   ],
   "verb": {
+    "toc": false,
+    "layout": "default",
+    "tasks": [
+      "readme"
+    ],
+    "plugins": [
+      "gulp-format-md"
+    ],
     "related": {
       "list": [
+        "assign-deep",
         "clone-deep",
-        "is-plain-object",
-        "mixin-object",
-        "mixin-deep",
         "extend-shallow",
-        "assign-deep"
+        "is-plain-object",
+        "isobject",
+        "kind-of",
+        "mixin-deep",
+        "mixin-object"
       ]
+    },
+    "lint": {
+      "reflinks": true
     }
   }
 }
