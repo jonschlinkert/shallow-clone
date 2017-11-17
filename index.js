@@ -42,12 +42,20 @@ clone.object = function cloneObject(obj) {
   }
 };
 
+clone.map = function cloneMap(val) {
+  return new Map(val);
+};
+
 clone.regexp = function cloneRegExp(re) {
   var flags = '';
   flags += re.multiline ? 'm' : '';
   flags += re.global ? 'g' : '';
   flags += re.ignorecase ? 'i' : '';
   return new RegExp(re.source, flags);
+};
+
+clone.set = function cloneSet(val) {
+  return new Set(val);
 };
 
 /**
