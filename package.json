@@ -24,14 +24,13 @@
     "test": "mocha"
   },
   "dependencies": {
-    "is-extendable": "^0.1.1",
-    "kind-of": "^5.0.0",
-    "mixin-object": "^2.0.1"
+    "is-extendable": "^1.0.1",
+    "kind-of": "^6.0.0",
+    "mixin-object": "^3.0.0"
   },
   "devDependencies": {
     "gulp-format-md": "^1.0.0",
-    "mocha": "^3.4.2",
-    "should": "^11.2.1"
+    "mocha": "^3.5.2"
   },
   "keywords": [
     "array",
