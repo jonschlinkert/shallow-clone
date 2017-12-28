@@ -50,7 +50,7 @@ clone.regexp = function cloneRegExp(re) {
   var flags = '';
   flags += re.multiline ? 'm' : '';
   flags += re.global ? 'g' : '';
-  flags += re.ignorecase ? 'i' : '';
+  flags += re.ignoreCase ? 'i' : '';
   return new RegExp(re.source, flags);
 };
 
