@@ -25,12 +25,12 @@
   },
   "dependencies": {
     "is-extendable": "^1.0.1",
-    "kind-of": "^6.0.0",
+    "kind-of": "^6.0.2",
     "mixin-object": "^3.0.0"
   },
   "devDependencies": {
     "gulp-format-md": "^1.0.0",
-    "mocha": "^3.5.2"
+    "mocha": "^3.5.3"
   },
   "keywords": [
     "array",
