@@ -1,7 +1,7 @@
 {
   "name": "shallow-clone",
-  "description": "Make a shallow clone of an object, array or primitive.",
-  "version": "2.0.2",
+  "description": "Creates a shallow clone of any JavaScript value.",
+  "version": "3.0.0",
   "homepage": "https://github.com/jonschlinkert/shallow-clone",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
   "contributors": [
@@ -24,9 +24,7 @@
     "test": "mocha"
   },
   "dependencies": {
-    "is-extendable": "^1.0.1",
-    "kind-of": "^6.0.2",
-    "mixin-object": "^3.0.0"
+    "kind-of": "^6.0.2"
   },
   "devDependencies": {
     "gulp-format-md": "^1.0.0",
@@ -55,12 +53,8 @@
       "list": [
         "assign-deep",
         "clone-deep",
-        "extend-shallow",
         "is-plain-object",
-        "isobject",
-        "kind-of",
-        "mixin-deep",
-        "mixin-object"
+        "kind-of"
       ]
     },
     "lint": {
