@@ -1,6 +1,6 @@
 # shallow-clone [![NPM version](https://img.shields.io/npm/v/shallow-clone.svg?style=flat)](https://www.npmjs.com/package/shallow-clone) [![NPM monthly downloads](https://img.shields.io/npm/dm/shallow-clone.svg?style=flat)](https://npmjs.org/package/shallow-clone) [![NPM total downloads](https://img.shields.io/npm/dt/shallow-clone.svg?style=flat)](https://npmjs.org/package/shallow-clone) [![Linux Build Status](https://img.shields.io/travis/jonschlinkert/shallow-clone.svg?style=flat&label=Travis)](https://travis-ci.org/jonschlinkert/shallow-clone)
 
-> Make a shallow clone of an object, array or primitive.
+> Creates a shallow clone of any JavaScript value.
 
 Please consider following this project's author, [Jon Schlinkert](https://github.com/jonschlinkert), and consider starring the project to show your :heart: and support.
 
@@ -15,47 +15,74 @@ $ npm install --save shallow-clone
 ## Usage
 
 ```js
-var clone = require('shallow-clone');
+const clone = require('shallow-clone');
 ```
 
-## shallow clones arrays
+**Supports**
 
-The array itself is cloned, but not the elements of the array. So any objects in the array will still not be cloned (e.g. they will be the same object as in the orginal array).
+* arrays
+* objects
+* dates
+* maps
+* sets
+* buffers
+* symbols
+* array buffers
+* float32 arrays
+* float64 arrays
+* int16 arrays
+* int32 arrays
+* int8 arrays
+* uint16 arrays
+* uint32 arrays
+* uint8clamped arrays
+* uint8 arrays
+* regular expressions
+* errors
+* primitives
+
+## Arrays
+
+By default, only the array itself is cloned, use [clone-deep](https://github.com/jonschlinkert/clone-deep) if you also need the elements in the array to be cloned.
 
 ```js
-var arr = [{ 'a': 0 }, { 'b': 1 }]
-var foo = clone(arr);
+const arr = [{ a: 0 }, { b: 1 }];
+const foo = clone(arr);
 // foo =>  [{ 'a': 0 }, { 'b': 1 }]
 
 // array is cloned
-assert.equal(actual === expected, false);
+assert(actual === expected); // false
 
 // array elements are not
 assert.deepEqual(actual[0], expected[0]); // true
 ```
 
-## returns primitives as-is
+## Objects
+
+Only the object is shallow cloned, use [clone-deep](https://github.com/jonschlinkert/clone-deep) if you also need the values in the object to be cloned.
 
 ```js
-clone(0)
-//=> 0
-
-clone('foo')
-//=> 'foo'
-```
-
-## shallow clone a regex
-
-```js
-clone(/foo/g)
-//=> /foo/g
-```
-
-## shallow clone an object
-
-```js
-clone({a: 1, b: 2, c: 3 })
+clone({a: 1, b: 2, c: 3 });
 //=> {a: 1, b: 2, c: 3 }
+```
+
+## RegExp
+
+Clones regular expressions and flags, and preserves the `.lastIndex`.
+
+```js
+const re = clone(/foo/g); //=> /foo/g
+// you can manually reset lastIndex if necessary
+re.lastIndex = 0;
+```
+
+## Primitives
+
+Simply returns primitives unchanged.
+
+```js
+clone(0); //=> 0
+clone('foo'); //=> 'foo'
 ```
 
 ## About
@@ -77,6 +104,7 @@ $ npm install && npm test
 ```
 
 </details>
+
 <details>
 <summary><strong>Building docs</strong></summary>
 
@@ -96,33 +124,29 @@ You might also be interested in these projects:
 
 * [assign-deep](https://www.npmjs.com/package/assign-deep): Deeply assign the enumerable properties and/or es6 Symbol properies of source objects to the target… [more](https://github.com/jonschlinkert/assign-deep) | [homepage](https://github.com/jonschlinkert/assign-deep "Deeply assign the enumerable properties and/or es6 Symbol properies of source objects to the target (first) object.")
 * [clone-deep](https://www.npmjs.com/package/clone-deep): Recursively (deep) clone JavaScript native types, like Object, Array, RegExp, Date as well as primitives. | [homepage](https://github.com/jonschlinkert/clone-deep "Recursively (deep) clone JavaScript native types, like Object, Array, RegExp, Date as well as primitives.")
-* [extend-shallow](https://www.npmjs.com/package/extend-shallow): Extend an object with the properties of additional objects. node.js/javascript util. | [homepage](https://github.com/jonschlinkert/extend-shallow "Extend an object with the properties of additional objects. node.js/javascript util.")
 * [is-plain-object](https://www.npmjs.com/package/is-plain-object): Returns true if an object was created by the `Object` constructor. | [homepage](https://github.com/jonschlinkert/is-plain-object "Returns true if an object was created by the `Object` constructor.")
-* [isobject](https://www.npmjs.com/package/isobject): Returns true if the value is an object and not an array or null. | [homepage](https://github.com/jonschlinkert/isobject "Returns true if the value is an object and not an array or null.")
 * [kind-of](https://www.npmjs.com/package/kind-of): Get the native type of a value. | [homepage](https://github.com/jonschlinkert/kind-of "Get the native type of a value.")
-* [mixin-deep](https://www.npmjs.com/package/mixin-deep): Deeply mix the properties of objects into the first object. Like merge-deep, but doesn't clone. | [homepage](https://github.com/jonschlinkert/mixin-deep "Deeply mix the properties of objects into the first object. Like merge-deep, but doesn't clone.")
-* [mixin-object](https://www.npmjs.com/package/mixin-object): Mixin the own and inherited properties of other objects onto the first object. Pass an… [more](https://github.com/jonschlinkert/mixin-object) | [homepage](https://github.com/jonschlinkert/mixin-object "Mixin the own and inherited properties of other objects onto the first object. Pass an empty object as the first arg to shallow clone.")
 
 ### Contributors
 
 | **Commits** | **Contributor** | 
 | --- | --- |
-| 9 | [jonschlinkert](https://github.com/jonschlinkert) |
+| 15 | [jonschlinkert](https://github.com/jonschlinkert) |
 | 2 | [doowb](https://github.com/doowb) |
 
 ### Author
 
 **Jon Schlinkert**
 
-* [linkedin/in/jonschlinkert](https://linkedin.com/in/jonschlinkert)
-* [github/jonschlinkert](https://github.com/jonschlinkert)
-* [twitter/jonschlinkert](https://twitter.com/jonschlinkert)
+* [LinkedIn Profile](https://linkedin.com/in/jonschlinkert)
+* [GitHub Profile](https://github.com/jonschlinkert)
+* [Twitter Profile](https://twitter.com/jonschlinkert)
 
 ### License
 
-Copyright © 2017, [Jon Schlinkert](https://github.com/jonschlinkert).
+Copyright © 2018, [Jon Schlinkert](https://github.com/jonschlinkert).
 Released under the [MIT License](LICENSE).
 
 ***
 
-_This file was generated by [verb-generate-readme](https://github.com/verbose/verb-generate-readme), v0.6.0, on December 28, 2017._
+_This file was generated by [verb-generate-readme](https://github.com/verbose/verb-generate-readme), v0.6.0, on April 10, 2018._
