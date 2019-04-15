@@ -49,7 +49,8 @@ function clone(val, deep) {
 }
 
 function cloneRegExp(val) {
-  const re = new val.constructor(val.source, /\w+$/.exec(val));
+  const flags = /\w+$/.exec(val) || undefined;
+  const re = new val.constructor(val.source, flags);
   re.lastIndex = val.lastIndex;
   return re;
 }

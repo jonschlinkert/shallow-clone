@@ -34,9 +34,14 @@ describe('clone()', function() {
       assert.deepEqual(clone([1, 2, 3]), [1, 2, 3]);
     });
 
-    it('should shallow clone a regex', function() {
+    it('should shallow clone a regex with flags', function() {
       assert(clone(/foo/g) !== /foo/g);
       assert.deepEqual(clone(/foo/g), /foo/g);
+    });
+
+    it('should shallow clone a regex without any flags', function() {
+      assert(clone(/foo/) !== /foo/);
+      assert.deepEqual(clone(/foo/), /foo/);
     });
 
     it('should shallow clone a date', function() {
