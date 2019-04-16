@@ -1,7 +1,7 @@
 {
   "name": "shallow-clone",
   "description": "Creates a shallow clone of any JavaScript value.",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "homepage": "https://github.com/jonschlinkert/shallow-clone",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
   "contributors": [
