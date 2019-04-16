@@ -1,4 +1,4 @@
-# shallow-clone [![NPM version](https://img.shields.io/npm/v/shallow-clone.svg?style=flat)](https://www.npmjs.com/package/shallow-clone) [![NPM monthly downloads](https://img.shields.io/npm/dm/shallow-clone.svg?style=flat)](https://npmjs.org/package/shallow-clone) [![NPM total downloads](https://img.shields.io/npm/dt/shallow-clone.svg?style=flat)](https://npmjs.org/package/shallow-clone) [![Linux Build Status](https://img.shields.io/travis/jonschlinkert/shallow-clone.svg?style=flat&label=Travis)](https://travis-ci.org/jonschlinkert/shallow-clone)
+# shallow-clone [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=W8YFZ425KND68) [![NPM version](https://img.shields.io/npm/v/shallow-clone.svg?style=flat)](https://www.npmjs.com/package/shallow-clone) [![NPM monthly downloads](https://img.shields.io/npm/dm/shallow-clone.svg?style=flat)](https://npmjs.org/package/shallow-clone) [![NPM total downloads](https://img.shields.io/npm/dt/shallow-clone.svg?style=flat)](https://npmjs.org/package/shallow-clone) [![Linux Build Status](https://img.shields.io/travis/jonschlinkert/shallow-clone.svg?style=flat&label=Travis)](https://travis-ci.org/jonschlinkert/shallow-clone)
 
 > Creates a shallow clone of any JavaScript value.
 
@@ -20,30 +20,30 @@ const clone = require('shallow-clone');
 
 **Supports**
 
-* arrays
-* objects
-* dates
-* maps
-* sets
-* buffers
-* symbols
 * array buffers
+* arrays
+* buffers
+* dates
+* errors
 * float32 arrays
 * float64 arrays
 * int16 arrays
 * int32 arrays
 * int8 arrays
+* maps
+* objects
+* primitives
+* regular expressions
+* sets
+* symbols
 * uint16 arrays
 * uint32 arrays
-* uint8clamped arrays
 * uint8 arrays
-* regular expressions
-* errors
-* primitives
+* uint8clamped arrays
 
 ## Arrays
 
-By default, only the array itself is cloned, use [clone-deep](https://github.com/jonschlinkert/clone-deep) if you also need the elements in the array to be cloned.
+By default, only the array itself is cloned (shallow), use [clone-deep](https://github.com/jonschlinkert/clone-deep) if you also need the elements in the array to be cloned.
 
 ```js
 const arr = [{ a: 0 }, { b: 1 }];
@@ -62,7 +62,7 @@ assert.deepEqual(actual[0], expected[0]); // true
 Only the object is shallow cloned, use [clone-deep](https://github.com/jonschlinkert/clone-deep) if you also need the values in the object to be cloned.
 
 ```js
-clone({a: 1, b: 2, c: 3 });
+console.log(clone({ a: 1, b: 2, c: 3 }));
 //=> {a: 1, b: 2, c: 3 }
 ```
 
@@ -71,9 +71,9 @@ clone({a: 1, b: 2, c: 3 });
 Clones regular expressions and flags, and preserves the `.lastIndex`.
 
 ```js
-const re = clone(/foo/g); //=> /foo/g
+const regex = clone(/foo/g); //=> /foo/g
 // you can manually reset lastIndex if necessary
-re.lastIndex = 0;
+regex.lastIndex = 0;
 ```
 
 ## Primitives
@@ -122,31 +122,32 @@ $ npm install -g verbose/verb#dev verb-generate-readme && verb
 
 You might also be interested in these projects:
 
-* [assign-deep](https://www.npmjs.com/package/assign-deep): Deeply assign the enumerable properties and/or es6 Symbol properies of source objects to the target… [more](https://github.com/jonschlinkert/assign-deep) | [homepage](https://github.com/jonschlinkert/assign-deep "Deeply assign the enumerable properties and/or es6 Symbol properies of source objects to the target (first) object.")
+* [assign-deep](https://www.npmjs.com/package/assign-deep): Deeply assign the values of all enumerable-own-properties and symbols from one or more source objects… [more](https://github.com/jonschlinkert/assign-deep) | [homepage](https://github.com/jonschlinkert/assign-deep "Deeply assign the values of all enumerable-own-properties and symbols from one or more source objects to a target object. Returns the target object.")
 * [clone-deep](https://www.npmjs.com/package/clone-deep): Recursively (deep) clone JavaScript native types, like Object, Array, RegExp, Date as well as primitives. | [homepage](https://github.com/jonschlinkert/clone-deep "Recursively (deep) clone JavaScript native types, like Object, Array, RegExp, Date as well as primitives.")
 * [is-plain-object](https://www.npmjs.com/package/is-plain-object): Returns true if an object was created by the `Object` constructor. | [homepage](https://github.com/jonschlinkert/is-plain-object "Returns true if an object was created by the `Object` constructor.")
 * [kind-of](https://www.npmjs.com/package/kind-of): Get the native type of a value. | [homepage](https://github.com/jonschlinkert/kind-of "Get the native type of a value.")
 
 ### Contributors
 
-| **Commits** | **Contributor** | 
-| --- | --- |
-| 15 | [jonschlinkert](https://github.com/jonschlinkert) |
-| 2 | [doowb](https://github.com/doowb) |
+| **Commits** | **Contributor** |  
+| --- | --- |  
+| 20 | [jonschlinkert](https://github.com/jonschlinkert) |  
+| 2  | [doowb](https://github.com/doowb) |  
+| 1  | [jakub-g](https://github.com/jakub-g) |  
 
 ### Author
 
 **Jon Schlinkert**
 
-* [LinkedIn Profile](https://linkedin.com/in/jonschlinkert)
 * [GitHub Profile](https://github.com/jonschlinkert)
 * [Twitter Profile](https://twitter.com/jonschlinkert)
+* [LinkedIn Profile](https://linkedin.com/in/jonschlinkert)
 
 ### License
 
-Copyright © 2018, [Jon Schlinkert](https://github.com/jonschlinkert).
+Copyright © 2019, [Jon Schlinkert](https://github.com/jonschlinkert).
 Released under the [MIT License](LICENSE).
 
 ***
 
-_This file was generated by [verb-generate-readme](https://github.com/verbose/verb-generate-readme), v0.6.0, on April 10, 2018._
+_This file was generated by [verb-generate-readme](https://github.com/verbose/verb-generate-readme), v0.8.0, on April 15, 2019._
