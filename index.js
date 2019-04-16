@@ -1,7 +1,7 @@
 /*!
  * shallow-clone <https://github.com/jonschlinkert/shallow-clone>
  *
- * Copyright (c) 2015-2018, Jon Schlinkert.
+ * Copyright (c) 2015-present, Jon Schlinkert.
  * Released under the MIT License.
  */
 
@@ -17,7 +17,7 @@ function clone(val, deep) {
     case 'object':
       return Object.assign({}, val);
     case 'date':
-      return new val.constructor(+val);
+      return new val.constructor(Number(val));
     case 'map':
       return new Map(val);
     case 'set':
@@ -49,7 +49,7 @@ function clone(val, deep) {
 }
 
 function cloneRegExp(val) {
-  const flags = /\w+$/.exec(val) || undefined;
+  const flags = val.flags !== void 0 ? val.flags : (/\w+$/.exec(val) || void 0);
   const re = new val.constructor(val.source, flags);
   re.lastIndex = val.lastIndex;
   return re;
@@ -67,7 +67,7 @@ function cloneTypedArray(val, deep) {
 
 function cloneBuffer(val) {
   const len = val.length;
-  const buf = Buffer.allocUnsafe ? Buffer.allocUnsafe(len) : new Buffer(len);
+  const buf = Buffer.allocUnsafe ? Buffer.allocUnsafe(len) : Buffer.from(len);
   val.copy(buf);
   return buf;
 }
