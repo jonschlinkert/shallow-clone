@@ -67,7 +67,8 @@ function cloneTypedArray(val, deep) {
 
 function cloneBuffer(val) {
   const len = val.length;
-  const buf = Buffer.allocUnsafe ? Buffer.allocUnsafe(len) : Buffer.from(len);
+  const constructor = val.constructor;
+  const buf = constructor.allocUnsafe ? constructor.allocUnsafe(len) : constructor.from(len);
   val.copy(buf);
   return buf;
 }
